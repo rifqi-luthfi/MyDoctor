@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ type, title }) => (
 );
 
 // Style function with type annotations for dynamic styling
-const styles = (type: 'primary' | 'secondary') =>
+const styles = (type: string | string) =>
   StyleSheet.create({
     container: {
       backgroundColor: type === 'secondary' ? 'white' : '#0BCAD4',
@@ -23,7 +23,7 @@ const styles = (type: 'primary' | 'secondary') =>
     } as ViewStyle,
     text: {
       fontSize: 16,
-      fontWeight: '600' as TextStyle['fontWeight'],
+      fontFamily: 'Nunito-SemiBold',
       textAlign: 'center',
       color: type === 'secondary' ? 'black' : 'white',
     } as TextStyle,

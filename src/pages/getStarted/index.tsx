@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { IlGetStarted, IlLogo } from '../../assets';
-import { Button } from '../../component';
+import { Button, Gap } from '../../component';
 
 const strings = {
     title: 'Konsultasi dengan dokter jadi lebih mudah & fleksibel',
@@ -18,7 +18,7 @@ const GetStarted: React.FC = () => {
       </View>
       <View>
         <Button type="primary" title= {strings.getStartedButton} />
-        <View style={styles.spacer} />
+        <Gap height={16}/>
         <Button type="secondary" title= {strings.signInButton} />
       </View>
     </ImageBackground>
@@ -34,13 +34,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '600',
     color: 'white',
     marginTop: 91,
     lineHeight: 36,
-  },
-  spacer: {
-    height: 16,
+    fontFamily: 'Nunito-SemiBold',
   },
 });
 
