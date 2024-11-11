@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 // Define prop types for better type safety and clarity
 interface ButtonProps {
   type: 'primary' | 'secondary';
   title: string;
+  onPress: () => void; // Corrected onPress type definition
 }
 
-const Button: React.FC<ButtonProps> = ({ type, title }) => (
-  <View style={styles(type).container}>
+const Button: React.FC<ButtonProps> = ({ type, title, onPress }) => (
+  <TouchableOpacity style={styles(type).container} onPress={onPress}>
     <Text style={styles(type).text}>{title}</Text>
-  </View>
+  </TouchableOpacity>
 );
 
 // Style function with type annotations for dynamic styling
@@ -20,13 +21,13 @@ const styles = (type: string | string) =>
       backgroundColor: type === 'secondary' ? 'white' : '#0BCAD4',
       paddingVertical: 10,
       borderRadius: 10,
-    } as ViewStyle,
+    },
     text: {
       fontSize: 16,
       fontFamily: 'Nunito-SemiBold',
       textAlign: 'center',
       color: type === 'secondary' ? 'black' : 'white',
-    } as TextStyle,
+    },
   });
 
 export default Button;

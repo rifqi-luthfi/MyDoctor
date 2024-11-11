@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { IlLogo } from '../../assets';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Constants for better scalability and maintainability
 const COLORS = {
@@ -9,13 +10,28 @@ const COLORS = {
 };
 
 const STRINGS = {
-    title: 'My Doctor',
+  title: 'My Doctor',
 };
 
-// TypeScript types for future scalability
-type SplashProps = {};
+// TypeScript types for navigation
+type RootStackParamList = {
+  Splash: undefined;
+  GetStarted: undefined;
+};
 
-const Splash: React.FC<SplashProps> = () => {
+type SplashNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Splash'>;
+
+type SplashProps = {
+  navigation: SplashNavigationProp;
+};
+
+const Splash: React.FC<SplashProps> = ({ navigation }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('GetStarted'); // Navigate to 'GetStarted' after 3 seconds
+    }, 3000);
+  }, [navigation]);
+
   return (
     <View style={styles.page}>
       <IlLogo />
