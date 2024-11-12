@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors, RootStackParamList } from '../../utils';
 
 // Define the navigation prop type
-type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Register'>;
+type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UploadPhoto'>;
 
 interface RegisterProps {
   navigation: RegisterScreenNavigationProp;
@@ -19,8 +19,7 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
 
   // Handle the continue button press
   const handleContinuePress = () => {
-    // Add logic here for what happens when the user presses "Continue"
-    console.log('Continue pressed');
+    navigation.navigate('UploadPhoto');
   };
 
   return (
