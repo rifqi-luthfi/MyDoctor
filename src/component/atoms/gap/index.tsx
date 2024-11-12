@@ -1,16 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 
 // Define prop types for better type safety and clarity
 interface GapProps {
-  height: number;
+  height?: number;
   width?: number; // Make width optional
 }
 
-// Get the screen width for dynamic width calculation
-const { width: screenWidth } = Dimensions.get('window');
-
-const Gap: React.FC<GapProps> = ({ height, width = screenWidth * 0.5 }) => (
+const Gap: React.FC<GapProps> = ({ height = 0, width = 0}) => (
   <View style={styles(height, width).container} />
 );
 

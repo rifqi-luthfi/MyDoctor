@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { colors } from '../../../utils';
 
 // Define prop types for better type safety and clarity
 interface ButtonProps {
@@ -18,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({ type, title, onPress }) => (
 const styles = (type: string | string) =>
   StyleSheet.create({
     container: {
-      backgroundColor: type === 'secondary' ? 'white' : '#0BCAD4',
+      backgroundColor: type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,
       paddingVertical: 10,
       borderRadius: 10,
     },
@@ -26,7 +27,7 @@ const styles = (type: string | string) =>
       fontSize: 16,
       fontFamily: 'Nunito-SemiBold',
       textAlign: 'center',
-      color: type === 'secondary' ? 'black' : 'white',
+      color: type === 'secondary' ? colors.black : colors.white,
     },
   });
 
