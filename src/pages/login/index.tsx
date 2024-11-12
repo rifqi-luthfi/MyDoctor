@@ -4,7 +4,8 @@ import { IlLogo } from '../../assets';
 import { Button, Gap, Input, Link } from '../../component';
 import { colors, fonts } from '../../utils';
 
-const Login: React.FC = () => {
+const Login: React.FC<{navigation : any}> = ({navigation}) => {
+  const handleContinuePress = () => navigation.navigate('MainApp');
   return (
       <View style={styles.page}>
         <IlLogo />
@@ -18,7 +19,7 @@ const Login: React.FC = () => {
         <Button
           type="primary"
           title="Login"
-          onPress={() => {}}
+          onPress={handleContinuePress}
         />
         <Gap height={30}/>
         <Link title="Create My Account" size={16} align="center"/>
