@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { IlGetStarted, IlLogo } from '../../assets';
 import { Button, Gap } from '../../component';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, RootStackParamList } from '../../utils';
+import { colors, fonts, RootStackParamList } from '../../utils';
 
 
 // Define the navigation prop type
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     marginTop: 91,
     lineHeight: 36,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.primary[600],
   },
   buttonContainer: {
     justifyContent: 'flex-end',

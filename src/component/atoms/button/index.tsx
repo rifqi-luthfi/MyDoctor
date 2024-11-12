@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { ButtonType, colors, IconType } from '../../../utils';
+import { ButtonType, colors, fonts, IconType } from '../../../utils';
 import IconOnly from './iconOnly';
 
 // Define prop types for better type safety and clarity
@@ -33,7 +33,7 @@ const styles = (type: 'primary' | 'secondary' | 'icon-only') =>
     },
     text: {
       fontSize: 16,
-      fontFamily: 'Nunito-SemiBold',
+      fontFamily: fonts.primary[600],
       textAlign: 'center',
       color: type === 'secondary' ? colors.black : colors.white,
     },

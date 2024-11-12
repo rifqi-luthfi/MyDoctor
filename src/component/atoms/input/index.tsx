@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, TextInputProps } from 'react-native';
-import { colors } from '../../../utils';
+import { colors, fonts } from '../../../utils';
 
 interface InputProps extends TextInputProps {
   label: string;
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.text.secondary,
     marginBottom: 6,
-    fontFamily: 'Nunito-Regular', // Corrected fontFamily spelling
+    fontFamily: fonts.primary[400], // Corrected fontFamily spelling
   },
   input: {
     borderRadius: 10,

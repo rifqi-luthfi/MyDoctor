@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { IlLogo } from '../../assets';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors } from '../../utils';
+import { colors, fonts } from '../../utils';
 
 const STRINGS = {
   title: 'My Doctor',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     textAlign: 'center',
     marginTop: 20,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.primary[600],
   },
 });
 
