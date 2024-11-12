@@ -2,12 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { IlLogo } from '../../assets';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-// Constants for better scalability and maintainability
-const COLORS = {
-  primaryText: '#112340',
-  background: 'white',
-};
+import { colors } from '../../utils';
 
 const STRINGS = {
   title: 'My Doctor',
@@ -42,14 +37,14 @@ const Splash: React.FC<SplashProps> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.white,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: 20,
-    color: COLORS.primaryText,
+    color: colors.secondary,
     textAlign: 'center',
     marginTop: 20,
     fontFamily: 'Nunito-SemiBold',

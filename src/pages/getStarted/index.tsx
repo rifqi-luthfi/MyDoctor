@@ -3,12 +3,8 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { IlGetStarted, IlLogo } from '../../assets';
 import { Button, Gap } from '../../component';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { colors, RootStackParamList } from '../../utils';
 
-// Define the parameter list for the navigator to type the navigation prop correctly
-type RootStackParamList = {
-  Register: undefined;
-  Login: undefined;
-};
 
 // Define the navigation prop type
 type GetStartedScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Register'>;
@@ -61,11 +57,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 40,
     justifyContent: 'space-between',
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   title: {
     fontSize: 28,
-    color: 'white',
+    color: colors.white,
     marginTop: 91,
     lineHeight: 36,
     fontFamily: 'Nunito-SemiBold',

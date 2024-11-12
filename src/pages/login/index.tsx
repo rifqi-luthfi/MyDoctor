@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { IlLogo } from '../../assets';
 import { Button, Gap, Input, Link } from '../../component';
+import { colors } from '../../utils';
 
 const Login: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const Login: React.FC = () => {
         <Gap height={40}/>
         <Button
           type="primary"
-          title="Link"
+          title="Login"
           onPress={() => {}}
         />
         <Gap height={30}/>
@@ -28,13 +29,13 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
   page: {
     padding: 40,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flex: 1,
   },
   title: {
      fontSize: 20,
      fontFamily: 'Nunito-SemiBold',
-     color: '#112340',
+     color: colors.secondary,
      marginVertical: 40,
      maxWidth: 153,
   },

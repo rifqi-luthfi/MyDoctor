@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TextStyle, View } from 'react-native';
+import { colors } from '../../../utils';
 
 interface LinkProps {
   title: string;
@@ -19,7 +20,7 @@ const styles = {
   text: (size: number, align: 'left' | 'right' | 'center' | 'justify'): TextStyle => ({
     fontSize: size,
     fontFamily: 'Nunito-Regular',
-    color: '#7D8797',
+    color: colors.text.secondary,
     textDecorationLine: 'underline',
     textAlign: align,
   }),
