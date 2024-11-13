@@ -5,6 +5,7 @@ type ColorSet = {
 const mainColors: ColorSet = {
     green1: '#0BCAD4',
     dark1: '#112340',
+    dark2: '#495A75',
     grey1: '#7D8797',
     grey2: '#E9E9E9',
     white: '#FFFFFF',
@@ -19,6 +20,8 @@ export const colors = {
     text: {
         primary: mainColors.dark1,
         secondary: mainColors.grey1,
+        menuInactive: mainColors.dark2,
+        menuActive: mainColors.green1,
     },
     button: {
         primary: {

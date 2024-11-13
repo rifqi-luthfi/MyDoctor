@@ -2,14 +2,17 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Doctor, GetStarted, Hospitals, Login, Messages, Register, Splash, UploadPhoto } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomNavigator } from '../component';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 // Create a Native Stack Navigator with types
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const renderMyTabBar = (props: BottomTabBarProps) => <BottomNavigator {...props} />;
 
 const MainApp = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator tabBar={renderMyTabBar}>
       <Tab.Screen
         name="Doctor"
         component={Doctor}

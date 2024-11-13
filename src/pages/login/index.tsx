@@ -5,7 +5,7 @@ import { Button, Gap, Input, Link } from '../../component';
 import { colors, fonts } from '../../utils';
 
 const Login: React.FC<{navigation : any}> = ({navigation}) => {
-  const handleContinuePress = () => navigation.navigate('MainApp');
+  const handleContinuePress = () => navigation.replace('MainApp');
   return (
       <View style={styles.page}>
         <IlLogo />
