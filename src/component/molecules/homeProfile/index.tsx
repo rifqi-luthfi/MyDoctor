@@ -7,7 +7,7 @@ export default function HomeProfile() {
   return (
     <View style={styles.container}>
         <Image source={DummyUser} style={styles.avatar}/>
-        <View>
+        <View style={styles.content}>
             <Text style={styles.name}>Rifqi Luthfi</Text>
             <Text style={styles.job}>Android Developer</Text>
         </View>
@@ -18,6 +18,9 @@ export default function HomeProfile() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+    },
+    content: {
+        justifyContent: 'center',
     },
     avatar: {
         width: 46,
