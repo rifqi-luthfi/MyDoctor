@@ -7,28 +7,30 @@ export default function Doctor() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <HomeProfile />
-        <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
-        <View style={styles.wrapperScroll}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={styles.category}>
-              <Gap width={16}/>
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <Gap width={6}/>
-            </View>
-          </ScrollView>
-        </View>
-        <Text style={styles.sectionLabel}>Top rated Doctor</Text>
-        <RatedDoctor />
-        <RatedDoctor />
-        <RatedDoctor />
-        <Text style={styles.sectionLabel}>Good news</Text>
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <HomeProfile />
+          <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
+          <View style={styles.wrapperScroll}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.category}>
+                <Gap width={16}/>
+                <DoctorCategory />
+                <DoctorCategory />
+                <DoctorCategory />
+                <DoctorCategory />
+                <Gap width={6}/>
+              </View>
+            </ScrollView>
+          </View>
+          <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
+          <RatedDoctor />
+          <RatedDoctor />
+          <RatedDoctor />
+          <Text style={styles.sectionLabel}>Good News</Text>
+          <NewsItem />
+          <NewsItem />
+          <NewsItem />
+        </ScrollView>
       </View>
     </View>
   );

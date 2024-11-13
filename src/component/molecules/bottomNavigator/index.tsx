@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: colors.secondary,
-    borderTopWidth: 1,
+    borderTopWidth: 0,
     justifyContent: 'space-between',
     paddingVertical: 12,
     paddingHorizontal: 53,

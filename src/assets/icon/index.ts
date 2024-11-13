@@ -7,6 +7,7 @@ import IcMessages from './ic_messages.svg';
 import IcMessagesActive from './ic_messages_active.svg';
 import IcHospitals from './ic_hospitals.svg';
 import IcHospitalsActive from './ic_hospitals_active.svg';
+import IcStarRate from './ic_star_rate.svg';
 
 export {
     IcBackDark,
@@ -18,4 +19,5 @@ export {
     IcMessagesActive,
     IcHospitals,
     IcHospitalsActive,
+    IcStarRate,
 };
