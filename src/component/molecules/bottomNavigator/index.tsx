@@ -20,7 +20,7 @@ const BottomNavigator: React.FC<BottomTabBarProps> = ({ state, descriptors, navi
         const label = options.tabBarLabel ?? options.title ?? route.name;
 
         // Ensure the label is valid
-        if (isValidLabel(label)) {
+        if (typeof label === 'string' && isValidLabel(label)) {
           const isFocused = state.index === index;
 
           const onPress = () => {
