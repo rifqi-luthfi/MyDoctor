@@ -4,6 +4,7 @@ import IlNullPhoto from './photo_null.png';
 import IlDokUmum from './il_dokter_umum.svg';
 import IlDokObat from './il_dokter_obat.svg';
 import IlPsikiater from './il_psikiater.svg';
+import IlHosp from './il_bg_hospitals.png';
 
 // Export IlLogo as a value
 export {
@@ -13,4 +14,5 @@ export {
     IlDokUmum,
     IlDokObat,
     IlPsikiater,
+    IlHosp,
 };
