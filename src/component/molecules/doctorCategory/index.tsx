@@ -1,17 +1,37 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { IlDokObat } from '../../../assets';
-import { colors, fonts } from '../../../utils';
+import { IlDokObat, IlDokUmum, IlPsikiater } from '../../../assets';
+import { CategoryType, colors, fonts } from '../../../utils';
 
-export default function DoctorCategory() {
+// Define type for category keys to ensure type safety
+interface DoctorCategoryProps {
+  category: CategoryType;
+}
+
+// Icon selection based on category with proper typing
+const getIcon = (category: CategoryType) => {
+  const icons: Record<CategoryType, React.FC> = {
+    'dokter umum': IlDokUmum,
+    'psikiater': IlPsikiater,
+    'dokter obat': IlDokObat,
+  };
+
+  return icons[category];
+};
+
+const DoctorCategory: React.FC<DoctorCategoryProps> = ({ category }) => {
+  const SelectedIcon = getIcon(category);
+
   return (
     <View style={styles.container}>
-      <IlDokObat style={styles.illustration}/>
+      <View style={styles.iconWrapper}>
+        <SelectedIcon />
+      </View>
       <Text style={styles.label}>Saya Butuh</Text>
-      <Text style={styles.category}>Dokter Umum</Text>
+      <Text style={styles.category}>{category}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: 10,
   },
-  illustration: {
+  iconWrapper: {
     marginBottom: 28,
   },
   label: {
@@ -35,3 +55,5 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
 });
+
+export default DoctorCategory;
