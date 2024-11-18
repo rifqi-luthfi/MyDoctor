@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-import { IcBackDark } from '../../../assets'; // Assuming IcBackDark is the correct import
+import { IcBackDark, IcBackLight } from '../../../assets'; // Assuming IcBackDark is the correct import
 import { IconType } from '../../../utils';
 
 interface IconOnlyProps {
@@ -10,8 +10,11 @@ interface IconOnlyProps {
 
 const IconOnly: React.FC<IconOnlyProps> = ({ onPress, icon }) => {
   const renderIcon = () => {
-    if (icon === 'back-dark' || icon === 'back-light') {
+    if (icon === 'back-dark' ) {
       return <IcBackDark />;
+    }
+    if (icon === 'back-light') {
+      return <IcBackLight />;
     }
     return <IcBackDark />; // Default icon if no match
   };

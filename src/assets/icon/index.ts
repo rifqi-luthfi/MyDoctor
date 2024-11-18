@@ -1,4 +1,5 @@
 import IcBackDark from './ic_back_dark.svg';
+import IcBackLight from './ic_back_light.svg';
 import IcAddPhoto from './btn_add_photo.svg';
 import IcRemovePhoto from './btn_remove_photo.svg';
 import IcDoctor from './ic_doctor.svg';
@@ -8,9 +9,11 @@ import IcMessagesActive from './ic_messages_active.svg';
 import IcHospitals from './ic_hospitals.svg';
 import IcHospitalsActive from './ic_hospitals_active.svg';
 import IcStarRate from './ic_star_rate.svg';
+import IcNext from './ic_next.svg';
 
 export {
     IcBackDark,
+    IcBackLight,
     IcAddPhoto,
     IcRemovePhoto,
     IcDoctor,
@@ -20,4 +23,5 @@ export {
     IcHospitals,
     IcHospitalsActive,
     IcStarRate,
+    IcNext,
 };

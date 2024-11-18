@@ -1,23 +1,32 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, ImageSourcePropType } from 'react-native';
-import { DummyDoc2 } from '../../../assets';
+import { DummyDoc2, IcNext } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 
 interface ListDoctorProps {
   profile?: ImageSourcePropType;
   name: string;
   desc: string;
+  type?: 'next' | 'none'; // Restrict `type` to specific values
 }
 
-const ListDoctor: React.FC<ListDoctorProps> = ({ profile = DummyDoc2, name, desc }) => (
-  <View style={styles.container}>
-    <Image source={profile} style={styles.avatar} />
-    <View style={styles.textContainer}>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.desc}>{desc}</Text>
+const ListDoctor: React.FC<ListDoctorProps> = ({
+  profile = DummyDoc2,
+  name,
+  desc,
+  type = 'none',
+}) => {
+  return (
+    <View style={styles.container}>
+      <Image source={profile} style={styles.avatar} />
+      <View style={styles.textContainer}>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.desc}>{desc}</Text>
+      </View>
+      {type === 'next' && <IcNext />} {/* Conditional rendering using a logical operator */}
     </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +39,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 46,
     height: 46,
-    borderRadius: 23, // Half of width/height for circular shape
+    borderRadius: 23, // Circular shape
     marginRight: 12,
   },
   textContainer: {
@@ -45,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: fonts.primary[300],
     color: colors.text.secondary,
-    marginTop: 4, // Small spacing between name and description
+    marginTop: 4, // Spacing between name and description
   },
 });
 

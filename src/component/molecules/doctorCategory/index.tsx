@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { IlDokObat, IlDokUmum, IlPsikiater } from '../../../assets';
 import { CategoryType, colors, fonts } from '../../../utils';
 
 // Define type for category keys to ensure type safety
 interface DoctorCategoryProps {
   category: CategoryType;
+  onPress: () => void
 }
 
 // Icon selection based on category with proper typing
@@ -19,17 +20,17 @@ const getIcon = (category: CategoryType) => {
   return icons[category];
 };
 
-const DoctorCategory: React.FC<DoctorCategoryProps> = ({ category }) => {
+const DoctorCategory: React.FC<DoctorCategoryProps> = ({ category, onPress }) => {
   const SelectedIcon = getIcon(category);
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.iconWrapper}>
         <SelectedIcon />
       </View>
       <Text style={styles.label}>Saya Butuh</Text>
       <Text style={styles.category}>{category}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
