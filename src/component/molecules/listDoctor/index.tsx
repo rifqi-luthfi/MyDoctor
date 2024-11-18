@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, ImageSourcePropType } from 'react-native';
+import { Image, StyleSheet, Text, View, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { DummyDoc2, IcNext } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 
@@ -8,6 +8,7 @@ interface ListDoctorProps {
   name: string;
   desc: string;
   type?: 'next' | 'none'; // Restrict `type` to specific values
+  onPress: () => void
 }
 
 const ListDoctor: React.FC<ListDoctorProps> = ({
@@ -15,16 +16,17 @@ const ListDoctor: React.FC<ListDoctorProps> = ({
   name,
   desc,
   type = 'none',
+  onPress,
 }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={profile} style={styles.avatar} />
       <View style={styles.textContainer}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.desc}>{desc}</Text>
       </View>
       {type === 'next' && <IcNext />} {/* Conditional rendering using a logical operator */}
-    </View>
+    </TouchableOpacity>
   );
 };
 

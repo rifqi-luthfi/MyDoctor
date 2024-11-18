@@ -12,4 +12,6 @@ export type RootStackParamList = {
     Register: undefined;
     Login: undefined;
     UploadPhoto: undefined;
+    Chatting: undefined
+    SelectDoctor: undefined
   };
