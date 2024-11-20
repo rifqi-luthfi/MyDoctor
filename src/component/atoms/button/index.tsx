@@ -2,16 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { ButtonType, colors, fonts, IconType } from '../../../utils';
 import IconOnly from './iconOnly';
+import BtnIconSend from './btnIconSend';
 
 // Define prop types for better type safety and clarity
 interface ButtonProps {
   type: ButtonType;
   title?: string;
   onPress: () => void;
-  icon?: IconType
+  icon?: IconType,
+  visible?: boolean,
 }
 
-const Button: React.FC<ButtonProps> = ({ type, title, onPress, icon = 'back-dark'}) => {
+const Button: React.FC<ButtonProps> = ({ type, title, onPress, icon = 'back-dark', visible = false}) => {
+  if (type === 'btn-icon-send') {
+    return <BtnIconSend onPress={onPress} visible={visible} />;
+  }
   if (type === 'icon-only') {
     return <IconOnly onPress={onPress} icon={icon}/>;
   }
@@ -24,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({ type, title, onPress, icon = 'back-dark
 };
 
 // Style function with type annotations for dynamic styling
-const styles = (type: 'primary' | 'secondary' | 'icon-only') =>
+const styles = (type: ButtonType) =>
   StyleSheet.create({
     container: {
       backgroundColor: type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,

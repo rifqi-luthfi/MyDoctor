@@ -10,6 +10,8 @@ import IcHospitals from './ic_hospitals.svg';
 import IcHospitalsActive from './ic_hospitals_active.svg';
 import IcStarRate from './ic_star_rate.svg';
 import IcNext from './ic_next.svg';
+import IcSendVisible from './ic_send_visible.svg';
+import IcSendDisable from './ic_send_disable.svg';
 
 export {
     IcBackDark,
@@ -24,4 +26,6 @@ export {
     IcHospitalsActive,
     IcStarRate,
     IcNext,
+    IcSendDisable,
+    IcSendVisible,
 };
