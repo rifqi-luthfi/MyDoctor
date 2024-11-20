@@ -1,9 +1,9 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Header, ListDoctor } from '../../component';
 import { DummyDoc1 } from '../../assets';
+import { Header, List } from '../../component';
 import { colors, RootStackParamList } from '../../utils';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type SelectDoctorScreenProps = NativeStackScreenProps<RootStackParamList, 'Chatting'>;
 
@@ -30,7 +30,7 @@ const SelectDoctor: React.FC<SelectDoctorScreenProps> = ({ navigation }) => {
       <Header onPress={handleBackPress} title="Pilih Dokter Anak" type="dark" />
       <View style={styles.listContainer}>
         {doctors.map((doctor) => (
-          <ListDoctor
+          <List
             key={doctor.id}
             profile={doctor.profile}
             name={doctor.name}

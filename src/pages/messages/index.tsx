@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '../../utils';
 import { DummyDoc1, DummyDoc2, DummyDoc3 } from '../../assets';
-import { ListDoctor } from '../../component';
+import { List } from '../../component';
+import { colors, fonts } from '../../utils';
 
 export default function Messages() {
   const [messages] = useState([
@@ -31,11 +31,12 @@ export default function Messages() {
       <View style={styles.content}>
         <Text style={styles.title}>Messages</Text>
         {messages.map((message) => (
-          <ListDoctor
+          <List
             key={message.id}
             profile={message.profile}
             name={message.name}
             desc={message.desc}
+            onPress={() => {}}
           />
         ))}
       </View>

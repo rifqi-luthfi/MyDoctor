@@ -14,4 +14,8 @@ export type RootStackParamList = {
     UploadPhoto: undefined;
     Chatting: undefined
     SelectDoctor: undefined
+    GetStarted: undefined
+    MainApp: undefined
+    UserProfile: undefined
+    Splash: undefined
   };

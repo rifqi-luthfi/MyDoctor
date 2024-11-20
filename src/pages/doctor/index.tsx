@@ -32,7 +32,7 @@ export default function Doctor({ navigation }: DoctorProps) {
           {/* Header Section */}
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile />
+            <HomeProfile onPress={() => navigation.navigate('UserProfile')}/>
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
 
