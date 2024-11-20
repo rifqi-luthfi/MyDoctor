@@ -19,4 +19,5 @@ export type RootStackParamList = {
     UserProfile: undefined
     Splash: undefined
     EditProfile: undefined
+    DoctorProfile: undefined
   };

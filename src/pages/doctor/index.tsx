@@ -1,17 +1,22 @@
+import React, { FC } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
 import { DoctorCategory, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../component';
 import { CategoryType, colors, fonts } from '../../utils';
-import { JsonCategoryDoctor } from '../../assets';
+import { JsonCategoryDoctor, DummyDoc1 } from '../../assets';
 
 interface DoctorProps {
   navigation: {
-    navigate: (screen: string) => void;
+    navigate: (screen: string, params?: object) => void;
   };
 }
 
-export default function Doctor({ navigation }: DoctorProps) {
-  // Render doctor categories dynamically
+const Doctor: FC<DoctorProps> = ({ navigation }) => {
+  const topRatedDoctors = [
+    { id: 1, name: 'Kenzie Nararya', category: 'Pediatrician', avatar: DummyDoc1 },
+    { id: 2, name: 'Jane Doe', category: 'Dermatologist', avatar: DummyDoc1 },
+    { id: 3, name: 'John Smith', category: 'Cardiologist', avatar: DummyDoc1 },
+  ];
+
   const renderDoctorCategories = () =>
     JsonCategoryDoctor.data.map((item) => (
       <DoctorCategory
@@ -21,22 +26,30 @@ export default function Doctor({ navigation }: DoctorProps) {
       />
     ));
 
-  // Render repeated components (e.g., RatedDoctor or NewsItem)
-  const renderRepeatedComponents = (Component: React.FC, count: number) =>
-    Array.from({ length: count }).map((_, index) => <Component key={index} />);
+  const renderTopRatedDoctors = () =>
+    topRatedDoctors.map((doctor) => (
+      <RatedDoctor
+        key={doctor.id}
+        name={doctor.name}
+        category={doctor.category}
+        avatar={doctor.avatar}
+        onPress={() => navigation.navigate('DoctorProfile', { doctorId: doctor.id })}
+      />
+    ));
+
+  const renderNewsItems = () =>
+    Array.from({ length: 3 }).map((_, index) => <NewsItem key={index} />);
 
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* Header Section */}
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile onPress={() => navigation.navigate('UserProfile')}/>
+            <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
 
-          {/* Doctor Categories Section */}
           <View style={styles.wrapperScroll}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.categoryContainer}>
@@ -47,14 +60,12 @@ export default function Doctor({ navigation }: DoctorProps) {
             </ScrollView>
           </View>
 
-          {/* Top Rated Doctors Section */}
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Doctor</Text>
-            {renderRepeatedComponents(RatedDoctor, 3)}
+            {renderTopRatedDoctors()}
 
-            {/* News Section */}
             <Text style={styles.sectionLabel}>Good News</Text>
-            {renderRepeatedComponents(NewsItem, 3)}
+            {renderNewsItems()}
 
             <Gap height={30} />
           </View>
@@ -62,7 +73,7 @@ export default function Doctor({ navigation }: DoctorProps) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -98,3 +109,5 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 });
+
+export default Doctor;

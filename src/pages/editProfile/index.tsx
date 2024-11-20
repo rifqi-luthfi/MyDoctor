@@ -1,12 +1,12 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Gap, Header, Input, List, Profile } from '../../component';
+import { Button, Gap, Header, Input, Profile } from '../../component';
 import { colors } from '../../utils';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../utils/types'; // Importing the type for navigation
 
 // Define the navigation prop types
-type EditProfileProps = NativeStackScreenProps<RootStackParamList, 'UserProfile'>;
+type EditProfileProps = NativeStackScreenProps<RootStackParamList, 'EditProfile'>;
 
 const EditProfile: React.FC<EditProfileProps> = ({ navigation }) => {
   return (

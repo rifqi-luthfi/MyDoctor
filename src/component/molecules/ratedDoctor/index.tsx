@@ -1,37 +1,43 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { DummyDoc1, IcStarRate } from '../../../assets';
+import { IcStarRate } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 
-export default function RatedDoctor() {
+interface RatedDoctorProps {
+  name: string;
+  category: string;
+  avatar: any; // Update to a proper type if you're using specific image imports
+  onPress: () => void;
+}
+
+const RatedDoctor: React.FC<RatedDoctorProps> = ({ name, category, avatar, onPress }) => {
   return (
-    <View style={styles.container}>
-      <Image source={DummyDoc1} style={styles.avatar}/>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Image source={avatar} style={styles.avatar} />
       <View style={styles.profile}>
-        <Text style={styles.name}>Kenzie nararya</Text>
-        <Text style={styles.category}>Pediatrician</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.category}>{category}</Text>
       </View>
       <View style={styles.rate}>
-        <IcStarRate />
-        <IcStarRate />
-        <IcStarRate />
-        <IcStarRate />
-        <IcStarRate />
+        {[...Array(5)].map((_, index) => (
+          <IcStarRate key={index} />
+        ))}
       </View>
-    </View>
+    </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 16,
+    paddingVertical: 8,
+    alignItems: 'center',
   },
   avatar: {
     width: 50,
     height: 50,
-    borderRadius: 50 / 2,
+    borderRadius: 25,
     marginRight: 12,
   },
   rate: {
@@ -51,6 +57,7 @@ const styles = StyleSheet.create({
   },
   profile: {
     flex: 1,
-    justifyContent: 'center',
   },
 });
+
+export default RatedDoctor;
