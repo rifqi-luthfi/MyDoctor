@@ -18,4 +18,5 @@ export type RootStackParamList = {
     MainApp: undefined
     UserProfile: undefined
     Splash: undefined
+    EditProfile: undefined
   };

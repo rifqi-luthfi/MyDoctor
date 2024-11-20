@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Chatting, Doctor, GetStarted, Hospitals, Login, Messages, Register, SelectDoctor, Splash, UploadPhoto, UserProfile } from '../pages';
+import { Chatting, Doctor, EditProfile, GetStarted, Hospitals, Login, Messages, Register, SelectDoctor, Splash, UploadPhoto, UserProfile } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
@@ -76,6 +76,11 @@ const Router = () => {
       <Stack.Screen
         name="UserProfile"
         component={UserProfile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

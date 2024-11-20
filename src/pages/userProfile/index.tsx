@@ -19,7 +19,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ navigation }) => {
         name="Edit Profile"
         desc="Last Update Yesterday"
         type="next"
-        onPress={() => {}}
+        onPress={() => {navigation.navigate('EditProfile');}}
         icon="edit-profile"
       />
       <List

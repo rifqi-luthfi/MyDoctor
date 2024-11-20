@@ -5,7 +5,7 @@ import { DummyDoc1 } from '../../assets';
 import { Header, List } from '../../component';
 import { colors, RootStackParamList } from '../../utils';
 
-type SelectDoctorScreenProps = NativeStackScreenProps<RootStackParamList, 'Chatting'>;
+type SelectDoctorScreenProps = NativeStackScreenProps<RootStackParamList, 'SelectDoctor'>;
 
 const SelectDoctor: React.FC<SelectDoctorScreenProps> = ({ navigation }) => {
   // Dummy data for the doctors
