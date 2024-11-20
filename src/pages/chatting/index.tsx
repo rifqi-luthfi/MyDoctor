@@ -14,7 +14,7 @@ const Chatting: React.FC<ChattingScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Header onPress={() => navigation.goBack()} title="Dr. Andre Kurniawan" type="dark" />
+      <Header onPress={() => navigation.goBack()} title="Dr. Andre Kurniawan" type="dark-profile" />
       <Text style={styles.chatDate}>Senin, 18 November 2024</Text>
       <ScrollView style={styles.chatContent}>
         <ChatItem />
@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
   },
   chatDate: {
     textAlign: 'center',
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: fonts.primary[400],
     color: colors.text.secondary,
-    marginVertical: 10,
+    marginVertical: 20,
   },
   chatContent: {
     flex: 1,

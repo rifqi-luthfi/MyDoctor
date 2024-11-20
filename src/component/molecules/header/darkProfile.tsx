@@ -1,17 +1,19 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { DummyDoc6 } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 import { Button, Gap } from '../../atoms';
-import DarkProfile from './darkProfile';
+
+
 
 interface HeaderProps {
-  onPress: () => void;
   title: string;
   type?: 'dark' | 'light' | 'dark-profile'; // Restrict type to specific string values
+  category: string,
 }
 
-const Header: React.FC<HeaderProps> = ({ onPress, title, type = 'light'}) => {
-
+const DarkProfile: React.FC<HeaderProps> = ({title, type = 'light', category}) => {
   const containerStyle = [
     styles.container,
     {
@@ -22,25 +24,28 @@ const Header: React.FC<HeaderProps> = ({ onPress, title, type = 'light'}) => {
   ];
 
   const textStyle = [
-    styles.text,
+    styles.name,
     { color: type === 'dark' ? colors.white : colors.secondary },
   ];
 
-  // Handle dark-profile type
-  if (type === 'dark-profile') {
-    return (
-      <DarkProfile title="Muhana Atikah"  category="Dokter Anak" type="dark"/>
-    );
-  }
+  const navigation = useNavigation();
+
+  const handleBackPress = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={containerStyle}>
       <Button
         type="icon-only"
         icon={type === 'dark' ? 'back-light' : 'back-dark'}
-        onPress={onPress}
+        onPress={handleBackPress}
       />
-      <Text style={textStyle}>{title}</Text>
+      <View style={styles.content}>
+        <Text style={textStyle}>{title}</Text>
+        <Text style={styles.category}>{category}</Text>
+      </View>
+      <Image source={DummyDoc6} style={styles.avatar}/>
       <Gap width={24} />
     </View>
   );
@@ -48,17 +53,31 @@ const Header: React.FC<HeaderProps> = ({ onPress, title, type = 'light'}) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
     paddingVertical: 30,
+    paddingLeft: 20,
     flexDirection: 'row',
     alignItems: 'center', // Ensures items align vertically in the center
   },
-  text: {
-    textAlign: 'center',
+  content: {
     flex: 1,
+  },
+  name: {
+    textAlign: 'center',
     fontSize: 20,
     fontFamily: fonts.primary[600],
   },
+  avatar: {
+    width: 46,
+    height: 46,
+    borderRadius: 46 / 2,
+  },
+  category: {
+    textAlign: 'center',
+    fontSize: 14,
+    fontFamily: fonts.primary[400],
+    marginTop: 6,
+    color: colors.text.subTitle,
+  },
 });
 
-export default Header;
+export default DarkProfile;
