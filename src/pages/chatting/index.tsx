@@ -2,11 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { ChatItem, Header, InputChat } from '../../component';
-import { colors, fonts } from '../../utils';
-
-type RootStackParamList = {
-  SelectDoctor: undefined;
-};
+import { colors, fonts, RootStackParamList } from '../../utils';
 
 type ChattingScreenProps = NativeStackScreenProps<RootStackParamList, 'Chatting'>;
 
@@ -17,9 +13,9 @@ const Chatting: React.FC<ChattingScreenProps> = ({ navigation }) => {
       <Header onPress={() => navigation.goBack()} title="Dr. Andre Kurniawan" type="dark-profile" />
       <Text style={styles.chatDate}>Senin, 18 November 2024</Text>
       <ScrollView style={styles.chatContent}>
+        <ChatItem isReceiver/>
         <ChatItem />
-        <ChatItem />
-        <ChatItem />
+        <ChatItem isReceiver/>
       </ScrollView>
       <InputChat />
     </View>

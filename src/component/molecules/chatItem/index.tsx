@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import Receiver from './receiver';
+import Sender from './sender';
 
-export default function ChatItem() {
-  return (
-    <View>
-      <Text>Chat Item</Text>
-    </View>
-  );
+export default function ChatItem({isReceiver}) {
+  if (isReceiver) {
+    return <Receiver />;
+  }
+  return <Sender />;
 }
-
-const styles = StyleSheet.create({});
