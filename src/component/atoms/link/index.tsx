@@ -1,18 +1,19 @@
 import React from 'react';
-import { Text, TextStyle, View } from 'react-native';
+import { Text, TextStyle, TouchableOpacity } from 'react-native';
 import { colors, fonts, TextAlign } from '../../../utils';
 
 interface LinkProps {
   title: string;
   size?: number;
   align?: TextAlign; // Restrict align to valid values
+  onPress: () => void; // Explicitly define onPress as required
 }
 
-const Link: React.FC<LinkProps> = ({ title, size = 14, align = 'left' }) => { // Default align to 'left'
+const Link: React.FC<LinkProps> = ({ title, size = 14, align = 'left', onPress }) => {
   return (
-    <View>
+    <TouchableOpacity onPress={onPress}>
       <Text style={styles.text(size, align)}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -19,7 +19,7 @@ const DoctorProfile: React.FC<DoctorProfileProps> = ({ navigation }) => {
           <ProfileItem label="Experience" value="5 years in Mobile Development" />
           <ProfileItem label="Specialty" value="Android Development & Kotlin" />
           <View style={styles.action}>
-            <Button title="Start Consultation" onPress={() => {}} />
+            <Button title="Start Consultation" onPress={() => navigation.navigate('Chatting')} />
           </View>
         </View>
       </ScrollView>

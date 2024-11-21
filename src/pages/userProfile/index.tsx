@@ -13,7 +13,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ navigation }) => {
     <View style={styles.container}>
       <Header title="Profile" onPress={() => navigation.goBack()} />  {/* Corrected the goBack usage */}
       <Gap height={10} />
-      <Profile />
+      <Profile name="Rifqi Luthfi" desc="Android Developer"/>
       <Gap height={14} />
       <List
         name="Edit Profile"
