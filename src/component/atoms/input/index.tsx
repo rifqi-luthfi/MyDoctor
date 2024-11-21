@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, TextInputProps } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-interface InputProps extends TextInputProps {
+interface InputProps {
   label: string;
+  value: string; // value of the TextInput
+  onChangeText: (text: string) => void; // function to handle text change
+  secureTextEntry?: boolean
 }
 
-const Input: React.FC<InputProps> = ({ label, ...textInputProps }) => {
+const Input: React.FC<InputProps> = ({ label, value, onChangeText, secureTextEntry = false }) => {
   const [border, setBorder] = useState(colors.border);
 
-  const onFocusForm = () => {
+  // Handler for focus event
+  const handleFocus = () => {
     setBorder(colors.tertiary);
   };
 
-  const onBlurForm = () => {
+  // Handler for blur event
+  const handleBlur = () => {
     setBorder(colors.border); // Reset the border color on blur
   };
 
@@ -21,10 +26,12 @@ const Input: React.FC<InputProps> = ({ label, ...textInputProps }) => {
     <View>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        onFocus={onFocusForm}
-        onBlur={onBlurForm}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         style={[styles.input, { borderColor: border }]} // Inline style for borderColor
-        {...textInputProps}
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );
