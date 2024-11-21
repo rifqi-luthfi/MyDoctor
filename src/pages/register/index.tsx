@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input } from '../../component';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, RootStackParamList } from '../../utils';
+import { colors, RootStackParamList, useForm } from '../../utils';
 
 // Define the navigation prop type
 type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UploadPhoto'>;
@@ -12,37 +12,23 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ navigation }) => {
-  const [formData, setFormData] = useState({
+  // Use the custom hook for form state management
+  const [formData, updateFormData] = useForm({
     fullName: '',
     job: '',
     email: '',
     password: '',
   });
 
-  const [isFormValid, setIsFormValid] = useState(false);
+  const isFormValid =
+    formData.fullName.trim() !== '' &&
+    formData.job.trim() !== '' &&
+    /\S+@\S+\.\S+/.test(formData.email) && // Basic email validation
+    formData.password.length >= 6; // Basic password length validation
 
   // Handle back button press
   const handleBackPress = () => {
     navigation.goBack();
-  };
-
-  // Handle input changes
-  const handleInputChange = (name: string, value: string) => {
-    setFormData((prevState) => {
-      const updatedForm = { ...prevState, [name]: value };
-      checkFormValidity(updatedForm);
-      return updatedForm;
-    });
-  };
-
-  // Validate the form data
-  const checkFormValidity = (data: typeof formData) => {
-    const isValid =
-      data.fullName.trim() !== '' &&
-      data.job.trim() !== '' &&
-      /\S+@\S+\.\S+/.test(data.email) && // Basic email validation
-      data.password.length >= 6; // Basic password length validation
-    setIsFormValid(isValid);
   };
 
   // Handle the continue button press
@@ -59,25 +45,25 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
           <Input
             label="Full Name"
             value={formData.fullName}
-            onChangeText={(value) => handleInputChange('fullName', value)}
+            onChangeText={(value) => updateFormData({ fullName: value })}
           />
           <Gap height={24} />
           <Input
             label="Job"
             value={formData.job}
-            onChangeText={(value) => handleInputChange('job', value)}
+            onChangeText={(value) => updateFormData({ job: value })}
           />
           <Gap height={24} />
           <Input
             label="Email Address"
             value={formData.email}
-            onChangeText={(value) => handleInputChange('email', value)}
+            onChangeText={(value) => updateFormData({ email: value })}
           />
           <Gap height={24} />
           <Input
             label="Password"
             value={formData.password}
-            onChangeText={(value) => handleInputChange('password', value)}
+            onChangeText={(value) => updateFormData({ password: value })}
             secureTextEntry={true}
           />
           <Gap height={40} />
