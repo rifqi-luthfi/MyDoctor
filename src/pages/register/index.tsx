@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input } from '../../component';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, RootStackParamList, useForm } from '../../utils';
+import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
+import axios from 'axios';
+import { useRegisterUser } from '../../service';
+import { SubmitHandler } from 'react-hook-form';
 
 // Define the navigation prop type
 type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UploadPhoto'>;
@@ -12,8 +15,11 @@ interface RegisterProps {
 }
 
 const Register: React.FC<RegisterProps> = ({ navigation }) => {
+
+  const createRegistrationMutation = useRegisterUser();
+
   // Use the custom hook for form state management
-  const [formData, updateFormData] = useForm({
+   const [formData, updateFormData] = useForm<RegisterPayload>({
     fullName: '',
     job: '',
     email: '',
@@ -33,8 +39,19 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
 
   // Handle the continue button press
   const handleContinuePress = () => {
-    console.log(formData);
-    // navigation.navigate('UploadPhoto');
+    if (isFormValid) {
+      createRegistrationMutation.mutate(formData, {
+        onSuccess: (response) => {
+          console.log('Registration successful:', response);
+          navigation.navigate('UploadPhoto'); // Navigate on success
+        },
+        onError: (error) => {
+          console.error('Registration failed:', error);
+        },
+      });
+    } else {
+      console.error('Form validation failed.');
+    }
   };
 
   return (
