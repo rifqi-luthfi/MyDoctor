@@ -1,6 +1,20 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+// 2nd line, add a new apply:
+project.ext.envConfigFiles = [
+        localdebug:".env.local",
+        localrelease :".env.local",
+        devdebug: ".env.dev",
+        devrelease: ".env.dev",
+        qadebug:'.env.qa',
+        qarelease:'.env.qa',
+        proddebug:'.env.prod',
+        prodrelease:'.env.prod',
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+def versionBuild = project.hasProperty('BUILD_NUMBER') ? "+" + project.findProperty('BUILD_NUMBER').toString() : "";
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -82,8 +96,42 @@ android {
         applicationId "com.mydoctor"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.env.get("VERSION_CODE").toInteger()
+        versionName project.env.get("VERSION_NAME")
+    }
+    
+    flavorDimensions "default"
+    productFlavors {
+        local {
+            resValue "string", "app_name", "MyDOctor Debug"
+            applicationIdSuffix '.debug'
+            versionNameSuffix "-DEBUG"
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+
+        }
+        dev {
+            resValue "string", "app_name", "MyDoctor Dev"
+            applicationIdSuffix '.dev'
+            versionNameSuffix "-DEV"+versionBuild
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+
+        }
+        qa {
+            resValue "string", "app_name", "MyDoctor Qa"
+            applicationIdSuffix '.qa'
+            versionNameSuffix "-QA"+versionBuild
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+
+        }
+        prod {
+           resValue "string", "app_name", "MyDoctor"
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+
+        }
     }
     signingConfigs {
         debug {

@@ -4,6 +4,7 @@ import { IlGetStarted, IlLogo } from '../../assets';
 import { Button, Gap } from '../../component';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { colors, fonts, RootStackParamList } from '../../utils';
+import Config from 'react-native-config';
 
 
 // Define the navigation prop type
@@ -31,6 +32,9 @@ const GetStarted: React.FC<GetStartedProps> = ({ navigation }) => {
 
   return (
     <ImageBackground source={IlGetStarted} style={styles.page}>
+      <Text>
+        _**ENVIROMENT:{Config.ENV}**_
+      </Text>
       <View>
         <IlLogo />
         <Text style={styles.title}>{strings.title}</Text>

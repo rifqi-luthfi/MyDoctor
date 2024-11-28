@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input } from '../../component';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
-import axios from 'axios';
 import { useRegisterUser } from '../../service';
-import { SubmitHandler } from 'react-hook-form';
+import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
 
 // Define the navigation prop type
 type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UploadPhoto'>;
