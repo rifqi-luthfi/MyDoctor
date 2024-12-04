@@ -1,7 +1,7 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Gap, Header, Input } from '../../component';
+import { Button, Gap, Header, Input, Loading } from '../../component';
 import { useRegisterUser } from '../../service';
 import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
 
@@ -15,6 +15,8 @@ interface RegisterProps {
 const Register: React.FC<RegisterProps> = ({ navigation }) => {
 
   const createRegistrationMutation = useRegisterUser();
+
+  const [loading, setLoading] = useState(false);
 
   // Use the custom hook for form state management
    const [formData, updateFormData] = useForm<RegisterPayload>({
@@ -37,23 +39,28 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
 
   // Handle the continue button press
   const handleContinuePress = () => {
+    setLoading(true);
     if (isFormValid) {
       createRegistrationMutation.mutate(formData, {
         onSuccess: (response) => {
+          setLoading(false);
           console.log('Registration successful:', response);
           navigation.navigate('UploadPhoto'); // Navigate on success
         },
         onError: (error) => {
+          setLoading(false);
           console.error('Registration failed:', error);
         },
       });
     } else {
+      setLoading(false);
       console.error('Form validation failed.');
     }
   };
 
   return (
-    <View style={styles.page}>
+    <>
+     <View style={styles.page}>
       <Header onPress={handleBackPress} title="Daftar Akun" />
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -91,6 +98,8 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
         </ScrollView>
       </View>
     </View>
+    {loading && <Loading/>}
+    </>
   );
 };
 

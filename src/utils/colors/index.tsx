@@ -13,7 +13,9 @@ const mainColors: ColorSet = {
     grey3: '#EDEEF0',
     white: '#FFFFFF',
     black: '#000000',
+    black2: 'rgba(0 , 0, 0, 0.5)',
     blue1: '#0066CB',
+
 };
 
 export const colors = {
@@ -42,4 +44,5 @@ export const colors = {
     },
     border: mainColors.grey2,
     cardLight: mainColors.green2,
+    loadingBg: mainColors.black2,
 };
