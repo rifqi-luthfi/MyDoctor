@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input, Loading } from '../../component';
 import { useRegisterUser } from '../../service';
 import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
+import { showMessage } from 'react-native-flash-message';
 
 // Define the navigation prop type
 type RegisterScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UploadPhoto'>;
@@ -49,6 +50,11 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
         },
         onError: (error) => {
           setLoading(false);
+          showMessage({
+            message: error.message,
+            description: error.name,
+            type: 'danger',
+          });
           console.error('Registration failed:', error);
         },
       });
