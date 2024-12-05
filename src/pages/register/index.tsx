@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Gap, Header, Input, Loading } from '../../component';
 import { useRegisterUser } from '../../service';
-import { colors, RegisterPayload, RootStackParamList, useForm } from '../../utils';
+import { colors, RegisterPayload, RootStackParamList, storage, useForm } from '../../utils';
 import { showMessage } from 'react-native-flash-message';
 
 // Define the navigation prop type
@@ -45,6 +45,7 @@ const Register: React.FC<RegisterProps> = ({ navigation }) => {
       createRegistrationMutation.mutate(formData, {
         onSuccess: (response) => {
           setLoading(false);
+          storage.set('user.name', formData.fullName);
           console.log('Registration successful:', response);
           navigation.navigate('UploadPhoto'); // Navigate on success
         },
